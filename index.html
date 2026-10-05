@@ -1,0 +1,230 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            overflow: hidden;
+            font-family: "Segoe UI", sans-serif;
+            background: linear-gradient(to bottom, #090b24, #17143d, #261b4d);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Stars */
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            from {
+                opacity: 0.2;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Moon */
+        .moon {
+            position: absolute;
+            top: 70px;
+            right: 12%;
+            width: 100px;
+            height: 100px;
+            background: #fff4d6;
+            border-radius: 50%;
+            box-shadow: 0 0 35px #fff4d6;
+        }
+
+        /* Main card */
+        .card {
+            width: 90%;
+            max-width: 500px;
+            padding: 45px 30px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            z-index: 2;
+        }
+
+        .card h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 17px;
+            color: #ddd;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        button {
+            border: none;
+            padding: 14px 25px;
+            border-radius: 30px;
+            background: #ffb6c9;
+            color: #321526;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.07);
+            box-shadow: 0 0 20px rgba(255,182,201,0.6);
+        }
+
+        #secret {
+            display: none;
+            margin-top: 25px;
+            animation: fadeIn 1s ease;
+        }
+
+        #secret p {
+            color: #fff;
+            font-size: 18px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Floating hearts */
+        .heart {
+            position: absolute;
+            bottom: -30px;
+            font-size: 20px;
+            animation: floatUp 7s linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-110vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="moon"></div>
+
+    <!-- Stars -->
+    <div class="star" style="top:10%; left:15%;"></div>
+    <div class="star" style="top:20%; left:35%;"></div>
+    <div class="star" style="top:15%; left:70%;"></div>
+    <div class="star" style="top:35%; left:85%;"></div>
+    <div class="star" style="top:60%; left:10%;"></div>
+    <div class="star" style="top:75%; left:30%;"></div>
+    <div class="star" style="top:65%; left:80%;"></div>
+    <div class="star" style="top:45%; left:60%;"></div>
+
+    <!-- Main message -->
+    <div class="card">
+
+        <h1>Hey Baba 🌙</h1>
+
+        <p>
+            I made you a little something...
+            <br>
+            because why not? 🤍
+        </p>
+
+        <button onclick="openMessage()">
+            Open your message 💌
+        </button>
+
+        <div id="secret">
+            <p>
+                Goodnight, baba ❤️
+                <br><br>
+                I wish I could be there with you.
+                <br>
+                Sleep well and don't miss me too much 🫶🏻
+                <br><br>
+                🌙✨
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+
+        function openMessage() {
+            document.getElementById("secret").style.display = "block";
+        }
+
+        // Create floating hearts
+        function createHeart() {
+
+            const heart = document.createElement("div");
+
+            heart.classList.add("heart");
+
+            heart.innerHTML = "♥";
+
+            heart.style.left = Math.random() * 100 + "vw";
+
+            heart.style.animationDuration =
+                (5 + Math.random() * 5) + "s";
+
+            heart.style.fontSize =
+                (12 + Math.random() * 15) + "px";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 10000);
+        }
+
+        setInterval(createHeart, 700);
+
+    </script>
+
+</body>
+</html>
+```
